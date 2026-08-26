@@ -4,14 +4,16 @@
   "description": "[![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"dev": "vite dev",
+	"build": "vite build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chingu-voyages/roundtable-tanstack-start.git"
   },
   "keywords": [],
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/chingu-voyages/roundtable-tanstack-start/issues"
   },
