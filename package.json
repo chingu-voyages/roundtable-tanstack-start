@@ -1,0 +1,19 @@
+{
+  "name": "roundtable-tanstack-start",
+  "version": "1.0.0",
+  "description": "[![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chingu-voyages/roundtable-tanstack-start.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/chingu-voyages/roundtable-tanstack-start/issues"
+  },
+  "homepage": "https://github.com/chingu-voyages/roundtable-tanstack-start#readme"
+}
