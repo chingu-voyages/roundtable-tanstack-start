@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Button } from '@/components/ui/button'
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/about')({
 	component: RouteComponent,
+	beforeLoad: () => {
+		console.log('beforeLoad "/about"!')
+	},
 })
 
 function RouteComponent() {
@@ -14,8 +16,7 @@ function RouteComponent() {
 					<Link to='/about'>About</Link>
 				</ul>
 			</nav>
-			Hello
-			<Button>Click</Button>
+			Hello "/about"!
 		</div>
 	)
 }
