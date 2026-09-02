@@ -2,7 +2,7 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { featureFlags } from '@/validation/env'
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/_layout/')({
 	component: RouteComponent,
 })
 
