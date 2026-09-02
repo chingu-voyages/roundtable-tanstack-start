@@ -1,5 +1,5 @@
-import { featureFlags } from '@/validation/env'
 import { createFileRoute, Link, Outlet } from '@tanstack/react-router'
+import { featureFlags } from '@/validation/env'
 
 export const Route = createFileRoute('/_layout')({
 	component: RouteComponent,
