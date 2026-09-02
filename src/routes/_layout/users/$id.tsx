@@ -8,7 +8,7 @@ export const Route = createFileRoute('/_layout/users/$id')({
 				throw new Error('Invalid id')
 			}
 			return { id }
-		}
+		},
 	},
 	component: RouteComponent,
 })
