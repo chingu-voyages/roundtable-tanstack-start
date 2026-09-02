@@ -1,8 +1,7 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
-import { Button } from '@/components/ui/button'
+import { createFileRoute, Link, Outlet } from '@tanstack/react-router'
 import { featureFlags } from '@/validation/env'
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/_layout')({
 	component: RouteComponent,
 })
 
@@ -16,8 +15,7 @@ function RouteComponent() {
 					{featureFlags.contact && <Link to='/contact'>Contact</Link>}
 				</ul>
 			</nav>
-			Hello
-			<Button>Click</Button>
+			<Outlet />
 		</div>
 	)
 }
