@@ -12,6 +12,12 @@ export function getRouter() {
 				<p>Page not found</p>
 			</div>
 		),
+		defaultErrorComponent: ({ error }) => (
+			<div>
+				<h1>500</h1>
+				<p>{error.message}</p>
+			</div>
+		),
 	})
 
 	return router
