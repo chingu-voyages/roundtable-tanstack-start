@@ -1,6 +1,6 @@
-import { ComponentProps } from 'react'
-import { Button } from '../ui/button'
+import type { ComponentProps } from 'react'
 import { useFormContext } from '@/hooks/form-context'
+import { Button } from '../ui/button'
 
 interface FormButtonProps extends ComponentProps<typeof Button> {
 	label?: string

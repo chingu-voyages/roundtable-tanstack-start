@@ -1,6 +1,6 @@
-import { useFieldContext } from '@/hooks/form-context'
 import { useSelector } from '@tanstack/react-form'
-import { ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
+import { useFieldContext } from '@/hooks/form-context'
 import { Field, FieldError, FieldLabel } from '../ui/field'
 import { Input } from '../ui/input'
 
