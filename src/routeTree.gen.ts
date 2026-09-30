@@ -10,25 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LayoutRouteRouteImport } from './routes/_layout/route'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LayoutIndexRouteImport } from './routes/_layout/index'
+import { Route as LayoutAboutRouteImport } from './routes/_layout/about'
+import { Route as LayoutContactRouteImport } from './routes/_layout/contact'
 import { Route as LayoutUsersIndexRouteImport } from './routes/_layout/users/index'
 import { Route as LayoutUsersIdRouteImport } from './routes/_layout/users/$id'
+import { Route as LayoutUsersNewRouteImport } from './routes/_layout/users/new'
 
 const LayoutRouteRoute = LayoutRouteRouteImport.update({
   id: '/_layout',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -41,6 +32,16 @@ const LayoutIndexRoute = LayoutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LayoutRouteRoute,
 } as any)
+const LayoutAboutRoute = LayoutAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => LayoutRouteRoute,
+} as any)
+const LayoutContactRoute = LayoutContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => LayoutRouteRoute,
+} as any)
 const LayoutUsersIndexRoute = LayoutUsersIndexRouteImport.update({
   id: '/users/',
   path: '/users/',
@@ -51,53 +52,74 @@ const LayoutUsersIdRoute = LayoutUsersIdRouteImport.update({
   path: '/users/$id',
   getParentRoute: () => LayoutRouteRoute,
 } as any)
+const LayoutUsersNewRoute = LayoutUsersNewRouteImport.update({
+  id: '/users/new',
+  path: '/users/new',
+  getParentRoute: () => LayoutRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof LayoutIndexRoute
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
+  '/about': typeof LayoutAboutRoute
+  '/contact': typeof LayoutContactRoute
   '/users/$id': typeof LayoutUsersIdRoute
+  '/users/new': typeof LayoutUsersNewRoute
   '/users/': typeof LayoutUsersIndexRoute
 }
 export interface FileRoutesByTo {
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
+  '/about': typeof LayoutAboutRoute
+  '/contact': typeof LayoutContactRoute
   '/': typeof LayoutIndexRoute
   '/users/$id': typeof LayoutUsersIdRoute
+  '/users/new': typeof LayoutUsersNewRoute
   '/users': typeof LayoutUsersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_layout': typeof LayoutRouteRouteWithChildren
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
+  '/_layout/about': typeof LayoutAboutRoute
+  '/_layout/contact': typeof LayoutContactRoute
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/users/$id': typeof LayoutUsersIdRoute
+  '/_layout/users/new': typeof LayoutUsersNewRoute
   '/_layout/users/': typeof LayoutUsersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/login' | '/users/$id' | '/users/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/about'
+    | '/contact'
+    | '/users/$id'
+    | '/users/new'
+    | '/users/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/about' | '/contact' | '/login' | '/' | '/users/$id' | '/users'
+  to:
+    | '/login'
+    | '/about'
+    | '/contact'
+    | '/'
+    | '/users/$id'
+    | '/users/new'
+    | '/users'
   id:
     | '__root__'
     | '/_layout'
-    | '/about'
-    | '/contact'
     | '/login'
+    | '/_layout/about'
+    | '/_layout/contact'
     | '/_layout/'
     | '/_layout/users/$id'
+    | '/_layout/users/new'
     | '/_layout/users/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   LayoutRouteRoute: typeof LayoutRouteRouteWithChildren
-  AboutRoute: typeof AboutRoute
-  ContactRoute: typeof ContactRoute
   LoginRoute: typeof LoginRoute
 }
 
@@ -108,20 +130,6 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof LayoutRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -138,6 +146,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutIndexRouteImport
       parentRoute: typeof LayoutRouteRoute
     }
+    '/_layout/about': {
+      id: '/_layout/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof LayoutAboutRouteImport
+      parentRoute: typeof LayoutRouteRoute
+    }
+    '/_layout/contact': {
+      id: '/_layout/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof LayoutContactRouteImport
+      parentRoute: typeof LayoutRouteRoute
+    }
     '/_layout/users/': {
       id: '/_layout/users/'
       path: '/users'
@@ -152,18 +174,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutUsersIdRouteImport
       parentRoute: typeof LayoutRouteRoute
     }
+    '/_layout/users/new': {
+      id: '/_layout/users/new'
+      path: '/users/new'
+      fullPath: '/users/new'
+      preLoaderRoute: typeof LayoutUsersNewRouteImport
+      parentRoute: typeof LayoutRouteRoute
+    }
   }
 }
 
 interface LayoutRouteRouteChildren {
+  LayoutAboutRoute: typeof LayoutAboutRoute
+  LayoutContactRoute: typeof LayoutContactRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutUsersIdRoute: typeof LayoutUsersIdRoute
+  LayoutUsersNewRoute: typeof LayoutUsersNewRoute
   LayoutUsersIndexRoute: typeof LayoutUsersIndexRoute
 }
 
 const LayoutRouteRouteChildren: LayoutRouteRouteChildren = {
+  LayoutAboutRoute: LayoutAboutRoute,
+  LayoutContactRoute: LayoutContactRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutUsersIdRoute: LayoutUsersIdRoute,
+  LayoutUsersNewRoute: LayoutUsersNewRoute,
   LayoutUsersIndexRoute: LayoutUsersIndexRoute,
 }
 
@@ -173,8 +208,6 @@ const LayoutRouteRouteWithChildren = LayoutRouteRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   LayoutRouteRoute: LayoutRouteRouteWithChildren,
-  AboutRoute: AboutRoute,
-  ContactRoute: ContactRoute,
   LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
